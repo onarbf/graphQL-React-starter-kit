@@ -1,0 +1,17 @@
+.form{
+  padding-left: 5%;
+  margin-bottom: 5%;
+}
+.input-text{
+  height: 40px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid grey;
+  background-color: white;
+  margin-bottom: 5%;
+  padding-left: 5%;
+}
+input[class^="input-"]:focus{
+  outline: none;
+  border-color: #0771FF;
+}
