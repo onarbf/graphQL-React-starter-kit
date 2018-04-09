@@ -8,7 +8,7 @@ const HOSTPORT = '27017';
 
 var app = express();
 
-app.use(express.static('./dist/public'));
+app.use(express.static(path.resolve(__dirname, './dist/public')));
 
 app.get('*',(req,res)=>{res.sendFile(path.resolve(__dirname, './dist/index.html'))});
 
