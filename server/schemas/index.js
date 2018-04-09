@@ -1,11 +1,6 @@
 export default `
-  type Query {
-    getUsers: [User]
-  }
-  type Mutation {
-    addUser(email: String!, password: String!, verifyPassword: String!): User
-    login(email: String!, password: String!): Response
-  }
+  type Query
+  type Mutation
   type Error{
     path: String
     code: String
@@ -14,12 +9,5 @@ export default `
   type Response{
     success: String!
     errors: [Error]
-  }
-  type User {
-    user: String
-    email: String
-    password: String
-    token: String
-    response: Response
   }
 `;

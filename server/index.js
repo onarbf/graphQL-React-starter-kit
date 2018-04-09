@@ -24,9 +24,12 @@ const schema = makeExecutableSchema({
 
 // Initialize the app
 const app = express();
+const PORT = process.env.PORT || 3000;
+const DDBB_PORT = process.env.DDBB_PORT || 27017;
+const HOST = process.env.HOST || '0.0.0.0';
 
 app.use(cors({
-  origin:["http://localhost:3001"]
+  origin:[`htp://${HOST}:${PORT}`]
 }))
 app.use(auth.checkAuth);
 
@@ -47,10 +50,10 @@ app.use('/graphiql', graphiqlExpress({
 }));
 
 //Connect to the Database
-mongoose.connect('mongodb://localhost:27017/graphql_react_app_from_scracth',()=>{
+mongoose.connect(`mongodb://${HOST}:${DDBB_PORT}/graphql_react_app_from_scracth`,()=>{
   console.log('Connected to localhost database via Mongoose...')
 });
 // Start the server
-app.listen(3000, () => {
-  console.log('GRAPHQL SERVER Running on port 3000... ');
+app.listen(PORT, () => {
+  console.log(`GRAPHQL SERVER Running on port ${PORT}... `);
 });

@@ -4,8 +4,11 @@ import { ApolloLink, concat } from 'apollo-link';
 import {InMemoryCache} from 'apollo-cache-inmemory';
 import { onError } from "apollo-link-error";
 
+const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || '0.0.0.0';
+
 const httpLink = new HttpLink({
-  uri: 'http://localhost:3000/graphql',
+  uri: `http://${HOST}:${PORT}/graphql`,
   // headers: {"x-token": localStorage.getItem('x-token') || null}
 });
 
@@ -15,7 +18,6 @@ const authMiddleware = new ApolloLink((operation, forward) => {
       "Access-Control-Expose-Headers": "x-token" ,
       "x-token": localStorage.getItem('x-token') || null
     },
-    err : 'human error'
   })
 
   return forward(operation).map(response => {
